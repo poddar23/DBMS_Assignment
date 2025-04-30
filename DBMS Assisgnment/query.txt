@@ -1,0 +1,121 @@
+1. CREATE DATABASE school_db;
+USE school_db;
+CREATE TABLE students (
+student_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_name VARCHAR(100) NOT NULL,
+    age INT,
+    class VARCHAR(50),
+    address VARCHAR(255)
+);
+
+2. INSERT INTO students (student_name, age, class, address)
+VALUES 
+('Aarav Sharma', 14, '9th Grade', '123 MG Road, Surat'),
+('Meera Patel', 15, '10th Grade', '456 LP Avenue, Surat'),
+('Rohan Desai', 13, '8th Grade', '789 SK Street, Surat'),
+('Ishita Mehta', 14, '9th Grade', '321 VR Lane, Surat'),
+('Kunal Joshi', 16, '11th Grade', '654 YZ Road, Surat');
+
+2. SELECT * FROM students;
+
+3. SELECT student_name, age
+FROM students;
+
+4. SELECT *
+FROM students
+WHERE age > 10;
+
+5. CREATE TABLE teachers (
+    teacher_id INT PRIMARY KEY AUTO_INCREMENT,
+    teacher_name VARCHAR(100) NOT NULL,
+    subject VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE
+);
+
+6. ALTER TABLE students
+ADD teacher_id INT;
+
+6. ALTER TABLE students
+ADD CONSTRAINT fk_teacher
+FOREIGN KEY (teacher_id)
+REFERENCES teachers(teacher_id);
+
+7. CREATE TABLE courses (
+    course_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_name VARCHAR(100) NOT NULL,
+    course_credits INT
+);
+
+8. CREATE DATABASE university_db;
+
+9. ALTER TABLE courses
+ADD course_duration VARCHAR(50);
+
+10. ALTER TABLE courses
+DROP COLUMN course_credits;
+
+11.ALTER TABLE students
+DROP FOREIGN KEY fk_teacher;
+
+DROP TABLE school_db.teachers;
+
+12. USE school_db;
+DROP TABLE students;
+SHOW TABLES LIKE 'students';
+13. INSERT INTO courses (course_id, course_name, course_duration)
+VALUES 
+  (1, 'Mathematics', 3),
+  (2, 'History', 4),
+  (3, 'Biology', 3);
+
+14. UPDATE courses
+SET course_duration = '6 months'
+WHERE course_id = 2;
+
+15. DELETE FROM courses
+WHERE course_id = 3;
+
+16. SELECT * FROM courses;
+17. SELECT * FROM courses
+ORDER BY course_duration DESC;
+
+18. SELECT * FROM courses
+LIMIT 2;
+19. CREATE USER 'user1'@'localhost' IDENTIFIED BY 'password1';
+CREATE USER 'user2'@'localhost' IDENTIFIED BY 'password2';
+GRANT SELECT ON school_db.courses TO 'user1'@'localhost';
+20. REVOKE INSERT ON school_db.courses FROM 'user1'@'localhost';
+GRANT INSERT ON school_db.courses TO 'user2'@'localhost';
+
+21. START TRANSACTION;
+
+INSERT INTO courses (course_id, course_name, course_duration)
+VALUES 
+  (4, 'Physics', '6 months'),
+  (5, 'Chemistry', '5 months'),
+  (6, 'English', '4 months');
+
+COMMIT;
+22. START TRANSACTION;
+
+INSERT INTO courses (course_id, course_name, course_duration)
+VALUES 
+  (7, 'Computer Science', '8 months'),
+  (8, 'Economics', '6 months');
+
+ROLLBACK;
+23. START TRANSACTION;
+
+SAVEPOINT before_update;
+
+UPDATE courses
+SET course_duration = '10 months'
+WHERE course_id = 4;
+
+ROLLBACK TO SAVEPOINT before_update;
+
+COMMIT;
+
+
+
+

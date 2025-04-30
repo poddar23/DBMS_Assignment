@@ -1,0 +1,176 @@
+DBMS
+1. DBMS stands for Data Base Management System.
+2. Data + Management System
+3. Database is a collection of inter - related data and Management System is a set of programs to store and retrieve those data.
+4. DBMS is a collection of inter-related data and set of programs to store & access those data in an easy and effective manner.
+5. For Example, university database organizes the data about students, faculty, and admin staff etc. which helps in efficient re
+
+
+DBMS 
+here is a list of some popular database
+1. MySQL
+2. Microsoft Access
+3. Oracle
+4. PostgreSQL
+5. dBASE
+6. FoxPro
+7. SQLite
+8. IBM DB2
+9. LibreOffice Base
+
+Need of DBMS
+1.Database systems are basially developed for large amount of data. When dealing with huge amount of data, there are two things that require optimization: Storage of data and retrieval of data
+Storage:
+1. According to the principles of database systems, the data is stored in such a way that it acquires lot less space as the redundant data (dupliacate data) has been removed before storage.
+2. Fast Retrieval of data: Along with storing the data in an optimized and systematic manner, it is also important that we retrieve the data quickly when needed. Database systems ensure that the data is retrieved as quickly as possible.
+
+                       SQL Query 
+                            |
+                    Quuery Langyage Procssor    (Parser + Optimizer)
+                    DBMS Engine                 ( File Manager + Transaction Manager)
+                            |
+                    Physical Database 
+
+Constraints (keys)
+Primary Key:
+1. A primary key is a column of table which uniquely identifies each tuple (row) in the table.
+2. Primary key enforces integrity constraints to the table
+3. Only one primary key is allowed to use in a table.
+4. The primary key value in a table changes very rarely so it is chosen with care where the change can occur in a seldom manner 
+5. A primary key of one table can be  referenced by foreign key of another table.
+
+Constraints(Keys)
+Unique key:
+1. Unique key constraints also identifies an individual table uniquely in a relation or table.
+2. A table can have more than one unique key unlike primary key.
+3. unique key constraints can accept only one NULL valye for column.
+4. Unique constraints are also referenced by the foreign key of another table.
+
+Constraints(keys)
+Foreign Key:
+1. When "one" table's primary field is added to a related "many" table in order to create the common field which related the two tables, it is called a foreign key in the "many" table.
+2. In the example given below salary of an employee is stored in salary table.
+3. Relation is established via is  stired in "Employee" table. To identify the salary of "Jforeign key column "Employee_ID_Ref" which refers "Employee_ID" field in Employee table.
+4. of "Jhon" is stored 
+
+Entity
+1. A real-world thing either living or non-living that is easily recognizable and non recognizavle. It is anything in the enterprise that is to  be represented in our database. It may be a physical thing or simply a fact about the enterprise or an event that happens in the real world.
+2. An entity can be place, person, object event or a concept, which stores data in the databse. The characteristics of the entities are must have an attribute, and a unique key. Every entity is made up of some "attribute" which represent that entity.
+3. Set of all entity is called entity set
+4. Example of entities: Person Employee, Student, patient
+
+Attribue 
+Attribute are the properties which define the entity type:
+for example Roll_No, Name, DOB,Age,Address,Mobile_No. are the attribute which defines entity type Student. In ER diagram. attribute is represented by an oval
+1. Key Attribute
+The attribute which uniquely identifies each entity in the entity set is called key attribute.
+for example: Roll_No will be unique for each student In ER diagram, key
+2. Composite Attribute
+An attribute composed of many other attribute is called as composite attribute. for example, address attribute of student Entity type consists of Street, city state and country 
+3. Multivalued Attribute 
+An attribute consisting more than on value for a given entity. for example phone_No
+4. Derived Attribute
+An attribute which can be derived from other attribute of the entity type is known as derived attribute e.g Age(can be derived from DOB)
+Cardinality
+The number of times an entity of an entity set participates in a relational set is known as cardinality 
+1. one to one 
+when each entity in each set can take part only once in the relatioship 
+2. many to one 
+3. one to many 
+4 many to many 
+
+Database Normalization
+Normalization is the process of minimizing redundancy (duplicity) from a relation or set of relations.
+Redundancy in relation may cause insertion, deletion and updation anomalies. 
+So, it helps to minimize the redundancy in relations.
+Most Commonly used normal forms:
+1. First Normal form(1NF)
+2. Second normal (2NF)
+3. Third normal form (3NF)
+4. Boyee & Codd normal form (BCNF)
+
+First Normal Form
+
+  Stud_no      Stud_Name    Stu_phone     Stud-State    Stud_Country
+   1            Ram           9716272        haryana      india
+   2            Ram           9748784        haryana      india
+   3            Suresh                       Punjab       india
+
+Stud_no      Stud_Name    Stu_phone     Stud-State    Stud_Country
+   1            Ram           9716272        haryana      india
+   1            Ram           9748784        haryana      india
+   2            Ram           234545          Punjab       india
+   4            Suresh        3445232
+
+  
+    Stu_no                Course_No           Course_Fee
+      1                      c1                  1000
+      2                      c2                  1500
+      1                      c4                  2000
+      4                      c3                  1000
+      4                      c1                  1000
+
+
+STUD_No    STUD_NAME            STUD_STATE          STUD_COUNTRY     STUD_AGE
+  1           Ram                  Haryana            India             20
+  2           Ram                  Punjab             India             19
+  3           Suresh                Punjab            India              21
+
+
+DATA DEFINATION LANGUAGE (DDL)
+
+Create - Creates a new table, a view of a table, or other object in database.
+Alter - modifies an existing database object, such as a table.
+Drop - Deletes an entire table ,a view of a table or other object in the database 
+
+Create database janse17;
+create table student(studentID int,studentName varchar(20), email varchar(30), contactno. int)
+alter table student add Column address varchar(50);
+alter TABLE student DROP column address
+alter TABLE student CHANGE contackno phone int;
+drop table student
+drop database janse17
+
+
+SQL Statement Types 
+Procedure 
+1. A stored procedure is a prepared SQL code that you can save, so the code can be reused over and over again.
+2. So if you have an SQL query that you write over and over again , save it as a stored procedure , and then just call it to execute it. 
+3. You can also pass the parameter to a stored procedure, so that the stored procedure can act based on the parameter values(s) that is passed.
+4. To create procedure , use Syntax:
+ CREATE PROCEDURE procedure_name AS sql_statement GO;
+5. To execute created procedure use syntax: 
+   EXEC procedure_name;
+
+SQL Statement Types 
+Trigger
+1. A trigger is a stored procedure in database which automatically invoke whenever a special event in the database occurs
+for example a trigger can be invoked when a row is inserted into a specified table.
+Syntax:
+create trigger [trigger_name] [before l after]
+{insert | update | delete} on [table_name] [for each row] [trigger_body]
+
+SQL Statement Types
+
+Transaction 
+The following commands are used to control transactions
+1. COMMIT - to save the changes 
+2. ROLLBACK - to roll back the changes.
+3. SAVEPOINT - create points within the group of transaction in which to ROLLBACK
+
+Commit 
+1. The COMMIT command is the transactional command used to save changes invoked by a transaction to the databse 
+2. The COMMIT commands saves all the transaction to the database since the last COMMIT or ROLLBACK commands .
+
+RollBack:
+1. The ROLLBACK commands is the transactional commands used to undo transactions that have not already been saved to the database.
+2. This command can only be used to undo transactions since the last COMMIT or ROLLBACK command was issued.
+3. The syntax for a ROLLBACK commands is as follows - ROLLBACK;
+
+Savepoints:
+A SAVEPOINTS is a point in a transactional when you can roll the transaction back to a certain point without rolling back the entire transaction
+2. The syntax for a SAVEPOINT commandis as shown below.
+3. SAVEPOINT SAVEPOINT_NAME;
+4. This commands serves only in the creation of a SAVEPOINT among all the transactional statements. The ROLLBACK commandsis used to undo a group of transactions.
+
+
