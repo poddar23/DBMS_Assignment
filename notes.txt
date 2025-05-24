@@ -173,4 +173,116 @@ A SAVEPOINTS is a point in a transactional when you can roll the transaction bac
 3. SAVEPOINT SAVEPOINT_NAME;
 4. This commands serves only in the creation of a SAVEPOINT among all the transactional statements. The ROLLBACK commandsis used to undo a group of transactions.
 
+Introduction to PL/SQL
+Definition to PL/SQL
+PL/SQL (Procedural Language/SQL) is Oracle's procedural extension to SQL, designed to enhance SQL's capability by adding programming constructs like variables, loops, conditionals,
+and error handling. It allows developers to write complex database operations in the form of procedures, function, triggers and package. The purpose,of PL/SQL is to provide more control over data processing, improve performance
+through batch processing , and enable the creation of reusable, modular database logic.
+Benefits of using PL/SQL
+The benefits of using PL/SQL includes:
+1. Enhanced Performance: PL/SQL allows batch processing, reducing the number of database calls by executing multiple SQL statements in a single block, improving, performance
+2. Error Handling: it provides robust exception handling, allowing you to manage and respond to error effectively during database operations .
+3. Modularity: PL/SQL supports the creation of reusable code through pocedures, function, and packages, promoting code organization and maintainability.
+4. Security: By using stored pocedures and function, you can control access to sensitive data, as users can interact with the databse only through these defines interfaces 
+
+DECLARE
+  message varchar2(100):= 'Hello, World!'; 
+BEGIN 
+  dbms_output.put_line(message); 
+END;
+/
+
+DECLARE
+  a int :=10;
+  b int :=0;
+  ans int;
+BEGIN 
+  ans :=a/b;
+  dbms_output.put_line('division ='||ans);
+  EXCEPTION
+  when zero_divide then
+  dbms_output.put_line('runtime error divide by zero');
+END;
+/
+1.This is where variables, constants, cursors, and  types are declared. It starts with the DECLARE keyword and ends before the executable section
+Example:
+DECLARE
+v_name VARCHAR2(100);
+v_salary NUMBER;
+2. Executable Section : This section contains the actual PL/SQL code where logic, SQL statements, and procedures are executed. It starts with the BEGIN keyword and ends with END;
+Example:
+BEGIN:
+v_salary :=5000;
+v_name :='John Doe';
+DBMS_OUTPUT.PUT_LINE('Employee:'||v_name||'Salary:'||v_salary);
+3. Exception Handling Section : this section handles error and exceptions that occur during execution. it starts with EXECPION and contains WHEN clauses for specific error types
+EXCEPTION
+WHEN NO_DATA_FOUND THEN
+DBMS_OUTPUT.PUT_LINE('No data found');
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE('Error occurred');
+END;
+
+Variables, Constants,and Data Types in PL/SQL
+
+Data Types in PL/SQL define the kind of data a variable or constant can hold. Common types includes:
+1. Scalar types like NUMBER, VARCHAR2, DATE, and CHAIR.
+2. Composite types like %TYPE (which allows a variable to inherit a column's data type) and %ROWTYPE (for row-like strutures).
+3. LOB types like CLOB and BLOB for storing large object such as text or binary data.
+
+DECLARE
+  age int :=19;
+BEGIN 
+  if age >=18 then
+  dbms_output.put_line('Eligible');
+  Else
+  dbms_output.put_line('Not Eligible');
+  end if;
+END;
+/
+
+
+DECLARE
+  day int :=3;
+BEGIN 
+    case day
+    when 1 then
+  dbms_output.put_line('Monday');
+  when 2 then
+  dbms_output.put_line('Tuesday');
+  when 3 then
+  dbms_output.put_line('Wednesday');
+  Else
+  dbms_output.put_line('wrong choice');
+  end case;
+END;
+/
+While Loop
+DECLARE
+  i int :=1;
+BEGIN 
+     while i <=5 loop
+     dbms_output.put_line('i='||i);
+     i:=i+1;
+  end loop;
+END;
+/
+
+For Loop
+DECLARE
+  i int :=1;
+BEGIN 
+     for i in 1..10 loop
+     dbms_output.put_line('i='||i);
+  end loop;
+END;
+/
+
+
+
+
+
+
+
+
 
